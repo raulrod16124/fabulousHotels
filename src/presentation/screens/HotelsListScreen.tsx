@@ -1,10 +1,15 @@
-import { View, Text, useColorScheme, SafeAreaView, StatusBar, ActivityIndicator, StyleSheet, FlatList } from 'react-native'
+import { View, useColorScheme, SafeAreaView, StatusBar, ActivityIndicator, StyleSheet, FlatList } from 'react-native'
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { useQuery } from '@tanstack/react-query';
 import { getHotels } from '../../services/hotels.actions';
+import { HotelCard } from '../components/HotelCard';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParams } from '../navigation/StackNavigator';
 
-export const HotelsListScreen = () => {
+interface IProps extends StackScreenProps<RootStackParams, "HotelsListScreen">{}
+
+export const HotelsListScreen = ({ navigation }: IProps) => {
     const {top} = useSafeAreaInsets();
     const isDarkMode = useColorScheme() === 'dark';
 
@@ -43,7 +48,9 @@ export const HotelsListScreen = () => {
                 keyExtractor={(hotel, index) => `${hotel.id}-${index}`}
                 numColumns={1}
                 style={{paddingTop: top + 20}}
-                renderItem={({item}) => <Text>{item.name}</Text>}
+                renderItem={({item}) => (
+                    <HotelCard hotel={item} onPress={() => navigation.navigate('HotelDetailsScreen', { hotel: item })} />
+                )}
                 onEndReachedThreshold={ 0.6 }
                 showsVerticalScrollIndicator={false}
             />
