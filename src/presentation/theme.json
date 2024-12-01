@@ -1,0 +1,11 @@
+{
+    "colors": {
+        "white": "#FFFFFF",
+        "black": "#000000",
+        "lightGrey": "#e0e0e0",
+        "background": "#FFFFFF",
+        "primary": "#219EBC",
+        "secondary": "#FFB703",
+        "text": "#023047"
+    }
+}
