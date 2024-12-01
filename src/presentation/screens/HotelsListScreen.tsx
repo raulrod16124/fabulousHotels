@@ -3,14 +3,14 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { useQuery } from '@tanstack/react-query';
 import { getHotels } from '../../services/hotels.actions';
 import { HotelCard } from '../components/HotelCard';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParams } from '../navigation/StackNavigator';
+import Header from '../components/Header';
+import theme from "../theme.json"
 
 interface IProps extends StackScreenProps<RootStackParams, "HotelsListScreen">{}
 
 export const HotelsListScreen = ({ navigation }: IProps) => {
-    const {top} = useSafeAreaInsets();
     const isDarkMode = useColorScheme() === 'dark';
 
     const backgroundStyle = {
@@ -27,27 +27,30 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
         return (
             <View style={styles.isLoadingContainer}>
                 <SafeAreaView style={backgroundStyle}>
-                    <StatusBar
-                        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-                        backgroundColor={backgroundStyle.backgroundColor}
-                    />
-                        <ActivityIndicator />
+                    <View style={[styles.statusBarContainer, { backgroundColor: theme.colors.primary}]}>
+                        <StatusBar barStyle="light-content" translucent={false} />
+                    </View>
+                    <ActivityIndicator />
                 </SafeAreaView>
             </View>
         )
     }
 
     return (
-        <SafeAreaView style={backgroundStyle}>
-            <StatusBar
-                barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-                backgroundColor={backgroundStyle.backgroundColor}
+        <SafeAreaView style={{backgroundColor: theme.colors.background}}>
+            <View style={[styles.statusBarContainer, { backgroundColor: theme.colors.primary}]}>
+                <StatusBar barStyle="light-content" translucent={false} />
+            </View>
+            <Header 
+                onSearch={() => {}}
+                onFilter={() => {}}
+                onSort={() => {}}
             />
             <FlatList 
                 data={hotels ?? []}
                 keyExtractor={(hotel, index) => `${hotel.id}-${index}`}
                 numColumns={1}
-                style={{paddingTop: top + 20}}
+                style={{paddingTop: 20}}
                 renderItem={({item}) => (
                     <HotelCard hotel={item} onPress={() => navigation.navigate('HotelDetailsScreen', { hotel: item })} />
                 )}
@@ -59,6 +62,10 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
 }
 
 const styles = StyleSheet.create({
+    statusBarContainer: {
+        height: StatusBar.currentHeight,
+        width: '100%',
+      },
     isLoadingContainer: {
         flex: 1,
         justifyContent: "center",

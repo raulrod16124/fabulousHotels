@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { RootStackParams } from '../navigation/StackNavigator';
 import { StackScreenProps } from '@react-navigation/stack';
+import theme from "../theme.json"
 
 interface IProps extends StackScreenProps<RootStackParams, "HotelDetailsScreen"> {}
 
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.background,
   },
   image: {
     width: '100%',
