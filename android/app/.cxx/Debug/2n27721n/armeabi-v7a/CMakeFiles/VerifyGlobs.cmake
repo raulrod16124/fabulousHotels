@@ -12,6 +12,31 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   file(TOUCH_NOCREATE "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/CMakeFiles/cmake.verify_globs")
 endif()
 
+# react_codegen_SRCS at /Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/*.cpp")
+set(OLD_GLOB
+  "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/RNVectorIconsSpec-generated.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/CMakeFiles/cmake.verify_globs")
+endif()
+
+# react_codegen_SRCS at /Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
+file(GLOB NEW_GLOB LIST_DIRECTORIES true "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/react/renderer/components/RNVectorIconsSpec/*.cpp")
+set(OLD_GLOB
+  "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/react/renderer/components/RNVectorIconsSpec/ComponentDescriptors.cpp"
+  "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/react/renderer/components/RNVectorIconsSpec/EventEmitters.cpp"
+  "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/react/renderer/components/RNVectorIconsSpec/Props.cpp"
+  "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/react/renderer/components/RNVectorIconsSpec/RNVectorIconsSpecJSI-generated.cpp"
+  "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/react/renderer/components/RNVectorIconsSpec/ShadowNodes.cpp"
+  "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/react/renderer/components/RNVectorIconsSpec/States.cpp"
+  )
+if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
+  message("-- GLOB mismatch!")
+  file(TOUCH_NOCREATE "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/CMakeFiles/cmake.verify_globs")
+endif()
+
 # react_codegen_SRCS at /Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/CMakeLists.txt:9 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/*.cpp")
 set(OLD_GLOB

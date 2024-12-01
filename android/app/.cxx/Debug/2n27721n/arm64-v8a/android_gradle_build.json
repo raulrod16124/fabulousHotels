@@ -1,5 +1,6 @@
 {
   "buildFiles": [
+    "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/@react-native-vector-icons/common/android/build/generated/source/codegen/jni/CMakeLists.txt",
     "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/react-native-gesture-handler/android/build/generated/source/codegen/jni/CMakeLists.txt",
     "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/react-native-safe-area-context/android/src/main/jni/CMakeLists.txt",
     "/Users/raulrodriguez/Desktop/things/code/fabulousHotels/node_modules/react-native-screens/android/src/main/jni/CMakeLists.txt",
@@ -32,6 +33,11 @@
         "/Users/raulrodriguez/.gradle/caches/8.10.2/transforms/e7a87e28456e3cd3dea6e54dbe4d1714/transformed/react-android-0.76.3-debug/prefab/modules/jsi/libs/android.arm64-v8a/libjsi.so",
         "/Users/raulrodriguez/.gradle/caches/8.10.2/transforms/e7a87e28456e3cd3dea6e54dbe4d1714/transformed/react-android-0.76.3-debug/prefab/modules/reactnative/libs/android.arm64-v8a/libreactnative.so"
       ]
+    },
+    "react_codegen_RNVectorIconsSpec::@479809fae146501fd34d": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "react_codegen_RNVectorIconsSpec"
     },
     "react_codegen_rngesturehandler_codegen::@39f233abcd2c728bc6ec": {
       "toolchain": "toolchain",

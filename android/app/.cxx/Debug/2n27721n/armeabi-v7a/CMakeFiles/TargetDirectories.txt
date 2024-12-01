@@ -1,6 +1,9 @@
 /Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/CMakeFiles/appmodules.dir
 /Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/CMakeFiles/edit_cache.dir
 /Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/RNVectorIconsSpec_autolinked_build/CMakeFiles/react_codegen_RNVectorIconsSpec.dir
+/Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/RNVectorIconsSpec_autolinked_build/CMakeFiles/edit_cache.dir
+/Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/RNVectorIconsSpec_autolinked_build/CMakeFiles/rebuild_cache.dir
 /Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/react_codegen_rngesturehandler_codegen.dir
 /Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/edit_cache.dir
 /Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/rngesturehandler_codegen_autolinked_build/CMakeFiles/rebuild_cache.dir

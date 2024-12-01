@@ -44,6 +44,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+  include("/Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/RNVectorIconsSpec_autolinked_build/cmake_install.cmake")
   include("/Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/rngesturehandler_codegen_autolinked_build/cmake_install.cmake")
   include("/Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/safeareacontext_autolinked_build/cmake_install.cmake")
   include("/Users/raulrodriguez/Desktop/things/code/fabulousHotels/android/app/.cxx/Debug/2n27721n/armeabi-v7a/rnscreens_autolinked_build/cmake_install.cmake")
