@@ -1,5 +1,7 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { Hotel } from '../../interfaces/hotels.interfaces'
+import theme from "../theme.json"
+import Icon from '@react-native-vector-icons/fontawesome6';
 
 interface IProps {
     hotel: Hotel;
@@ -16,14 +18,25 @@ export const HotelCard = ({hotel, onPress}: IProps) => {
                     <Text style={styles.title}>{hotel.name}</Text>
                 </View>
 
-                <View style={styles.infoContainer}>
-                    <Text style={styles.infoText}>⭐ {hotel.stars} Stars</Text>
-                    <Text style={styles.infoText}>Price: {hotel.price}</Text>
-                </View>
+                <View style={styles.infoWrapper}>
+                    <View style={styles.infoContainer}>
+                        <Icon 
+                            name="star" 
+                            size={20} 
+                            color={theme.colors.secondary} 
+                            iconStyle='solid'
+                        />
+                        <Text style={styles.infoText}>
+                            {hotel.stars}
+                        </Text>
+                    </View>
 
-                <Text style={[styles.infoText, { marginTop: 5, fontSize: 12 }]}>
-                    {hotel.location.address}, {hotel.location.city}
-                </Text>
+                    <Text style={styles.infoText}>{hotel.price} $</Text>
+
+                    <Text style={[styles.infoText, { marginTop: 5 }]}>
+                        {hotel.location.city}
+                    </Text>
+                </View>
             </View>
         </TouchableOpacity>
     )
@@ -31,44 +44,58 @@ export const HotelCard = ({hotel, onPress}: IProps) => {
 
 const styles = StyleSheet.create({
     container: {
-      height: 300,
-      borderRadius: 10,
-      overflow: 'hidden',
-      marginVertical: 10,
-      elevation: 3,
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.2,
-      shadowRadius: 4,
-      marginHorizontal: 20
+        height: 300,
+        borderRadius: 20,
+        overflow: 'hidden',
+        marginVertical: 10,
+        elevation: 3,
+        shadowColor: theme.colors.black,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+        marginHorizontal: 20
     },
     image: {
-      flex: 1,
-      width: '100%',
-      resizeMode: 'cover',
+        flex: 1,
+        width: '100%',
+        resizeMode: 'cover',
     },
     textOverlay: {
-      position: 'absolute',
-      bottom: 0,
-      width: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
-      padding: 10,
+        position: 'absolute',
+        bottom: 0,
+        width: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        borderTopStartRadius: 20,
+        borderTopEndRadius: 20,
     },
     titleContainer: {
-      marginBottom: 5,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        marginBottom: 5,
     },
     title: {
-      color: '#fff',
-      fontSize: 18,
-      fontWeight: 'bold',
+        color: theme.colors.white,
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    infoWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: theme.colors.primary,
+        padding: 10,
+        paddingHorizontal: 20,
+        borderWidth: 1,
+        borderColor: theme.colors.primary
     },
     infoContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
     infoText: {
-      color: '#fff',
-      fontSize: 14,
+        color: theme.colors.text,
+        fontSize: 18,
+        fontWeight: 'bold',
     },
   });
