@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text, Modal, Pressable, StyleSheet, TextInput } from 'react-native';
+import { View, Text, Modal, Pressable, StyleSheet, TextInput, Platform } from 'react-native';
 import theme from "../theme.json";
 import Icon from '@react-native-vector-icons/fontawesome6';
 import { Filters } from '../../interfaces/hotels.interfaces';
@@ -13,6 +13,7 @@ interface IProps {
 }
 
 export const FilterModal = ({ isVisible, closeModal, hotels, applyFilters, filters }: IProps) => {
+    const isAndroid = Platform.OS === "android";
     const [selectedStars, setSelectedStars] = useState<number | null>(null);
     const [selectedMaxPrice, setSelectedMaxPrice] = useState<number | null>(null);
 
@@ -79,15 +80,16 @@ export const FilterModal = ({ isVisible, closeModal, hotels, applyFilters, filte
                         ))}
                     </View>
 
-                    <Text style={styles.filterCategory}>Max Price</Text>
+                    <Text style={styles.filterCategory}>Maximum Price</Text>
                     <TextInput
-                        style={styles.priceInput}
-                        placeholder="Max Price..."
+                        style={[
+                            styles.priceInput,
+                            !isAndroid && { paddingVertical: 10}
+                        ]}
                         onChangeText={(value) => {
                             const numericValue = value.replace(/[^0-9]/g, "");
                             setSelectedMaxPrice(numericValue ? parseInt(numericValue, 10) : null);
                         }}
-                        placeholderTextColor={theme.colors.white}
                         keyboardType="numeric"
                         maxLength={4}
                         value={selectedMaxPrice?.toString()}
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     },
     priceInput: {
         borderWidth: 0.5,
-        borderRadius: 20,
+        borderRadius: 10,
         textAlign: "center",
         fontSize: 24
     },
