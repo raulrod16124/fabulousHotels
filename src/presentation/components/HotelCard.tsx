@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity, StyleProp, ViewStyle } from 'react-native'
 import { Hotel } from '../../interfaces/hotels.interfaces'
 import theme from "../theme.json"
 import Icon from '@react-native-vector-icons/fontawesome6';
@@ -6,11 +6,12 @@ import Icon from '@react-native-vector-icons/fontawesome6';
 interface IProps {
     hotel: Hotel;
     onPress: () => void;
+    extraStyles?: StyleProp<ViewStyle>
 }
 
-export const HotelCard = ({hotel, onPress}: IProps) => {
+export const HotelCard = ({hotel, onPress, extraStyles}: IProps) => {
     return (
-        <TouchableOpacity onPress={onPress} style={styles.container}>
+        <TouchableOpacity onPress={onPress} style={[styles.container, extraStyles]}>
             <Image source={{ uri: hotel.gallery[0] }} style={styles.image} />
 
             <View style={styles.textOverlay}>
