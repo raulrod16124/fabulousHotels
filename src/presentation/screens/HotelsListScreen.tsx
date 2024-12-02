@@ -1,4 +1,4 @@
-import { View, useColorScheme, SafeAreaView, StatusBar, ActivityIndicator, StyleSheet, FlatList, Platform } from 'react-native'
+import { View, useColorScheme, SafeAreaView, StatusBar, ActivityIndicator, StyleSheet, FlatList, Platform, Modal, Text, Pressable } from 'react-native'
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { useQuery } from '@tanstack/react-query';
 import { getHotels } from '../../services/hotels.actions';
@@ -8,7 +8,11 @@ import { RootStackParams } from '../navigation/StackNavigator';
 import Header from '../components/Header';
 import theme from "../theme.json"
 import { useState } from 'react';
-import { Hotel } from '../../interfaces/hotels.interfaces';
+import { FilterModal } from '../components/FilterModal';
+import { HotelListManager } from '../components/HotelListManager';
+import { FilterLabels } from '../components/FilterLabels';
+import { Filters } from '../../interfaces/hotels.interfaces';
+import { removeByValue } from '../helpers';
 
 interface IProps extends StackScreenProps<RootStackParams, "HotelsListScreen">{}
 
@@ -19,7 +23,8 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
       backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     };
 
-    const [searchedHotels, setSearchedHotels] = useState<Hotel[]>([])
+    const [filterModalVisible, setFilterModalVisible] = useState(false);
+    const [appliedFilters, setAppliedFilters] = useState<Filters>();
 
     const {isLoading, data: hotels = []} = useQuery({
       queryKey: ["hotels"],
@@ -40,40 +45,63 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
         )
     }
 
-    const onSearch = (text: string) => {
-        const result = hotels.filter( hotel => {
-            if(
-                hotel.name.includes(text) || 
-                hotel.location.address.includes(text) ||
-                hotel.location.city.includes(text)
-            ){
-                return hotel
-            } 
-        })
-        setSearchedHotels(result);
-    }
-
     return (
-        <SafeAreaView style={{backgroundColor: theme.colors.background, marginBottom: isAndroid ? 170 : 100}}>
+        <SafeAreaView style={{
+            backgroundColor: theme.colors.background, 
+            marginBottom: isAndroid ? 170 : 100,
+        }}>
             <View style={[styles.statusBarContainer, { backgroundColor: theme.colors.primary}]}>
                 <StatusBar barStyle="light-content" translucent={false} />
             </View>
-            <Header 
-                onSearch={onSearch}
-                onFilter={() => {}}
-                onSort={() => {}}
-            />
-            <FlatList 
-                data={searchedHotels.length ? searchedHotels : hotels}
-                keyExtractor={(hotel, index) => `${hotel.id}-${index}`}
-                numColumns={1}
-                style={{paddingTop: 20}}
-                renderItem={({item}) => (
-                    <HotelCard hotel={item} onPress={() => navigation.navigate('HotelDetailsScreen', { hotel: item })} />
+            <HotelListManager hotels={hotels}>
+                {/* {(processedHotels, onSearch, onFilter, onSort) => ( */}
+                {(processedHotels, onSearch, onFilter) => (
+                    <>
+                        <Header 
+                            onSearch={onSearch} 
+                            onFilter={()=> setFilterModalVisible(true)} 
+                            // onSort={onSort} 
+                            onSort={()=>{}} 
+                        />
+
+                        <FilterLabels 
+                            appliedFilters={appliedFilters} 
+                            onRemoveFilter={(valueToRemove) => {
+                                const updatedFilters = removeByValue(valueToRemove, appliedFilters);
+                                setAppliedFilters(updatedFilters)
+                                onFilter(updatedFilters)
+                            }} 
+                        />
+
+                        <FlatList
+                            data={processedHotels}
+                            keyExtractor={(hotel, index) => `${hotel.id}-${index}`}
+                            renderItem={({ item, index }) => (
+                                <HotelCard
+                                    hotel={item}
+                                    onPress={() => navigation.navigate("HotelDetailsScreen", { hotel: item })}
+                                    extraStyles={index === processedHotels.length - 1 && styles.lastItem}
+                                />
+                            )}
+                            showsVerticalScrollIndicator={false}
+                            style={styles.list}
+                        />
+                        {processedHotels.length < 1 && (
+                            <Text style={styles.noHotelsText}>No hotels found</Text>
+                        )}
+                        <FilterModal
+                            isVisible={filterModalVisible} 
+                            hotels={hotels}
+                            closeModal={() => setFilterModalVisible(false)}
+                            applyFilters={(values) => {
+                                onFilter(values)
+                                setAppliedFilters(values)
+                            }}
+                            filters={appliedFilters}
+                        />  
+                    </>
                 )}
-                onEndReachedThreshold={ 0.6 }
-                showsVerticalScrollIndicator={false}
-            />
+            </HotelListManager>
         </SafeAreaView>
     )
 }
@@ -87,5 +115,25 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
-    }
+    },
+    modalContainer: {
+        flex: 1,
+        justifyContent: "flex-end",
+        alignItems: "center",
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+    },
+    list:{
+        paddingTop: 20,
+    },
+    lastItem: {
+        marginBottom: 40,
+        paddingBottom: 40,
+    },
+    noHotelsText: {
+        fontSize: 18,
+        color: theme.colors.text,
+        textAlign: 'center',
+        marginVertical: 20,
+        fontWeight: '500',
+    },
 })
