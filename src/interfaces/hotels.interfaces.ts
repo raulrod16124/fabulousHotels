@@ -28,3 +28,8 @@ export interface Location {
     latitude:  number;
     longitude: number;
 }
+
+export interface Filters {
+    stars?: number;
+    maxPrice?: number;
+}
