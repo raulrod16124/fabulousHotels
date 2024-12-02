@@ -3,7 +3,7 @@ import Icon from '@react-native-vector-icons/fontawesome6';
 import theme from "../theme.json"
 
 interface IProps {
-    onSearch: () => void;
+    onSearch: (text: string) => void;
     onFilter: () => void;
     onSort: () => void;
 }
@@ -19,7 +19,8 @@ const Header = ({ onSearch, onFilter, onSort }:IProps) => {
         <TextInput
           style={styles.searchInput}
           placeholder="Search..."
-          onChangeText={onSearch}
+          onChangeText={(value) => onSearch(value)}
+          placeholderTextColor={theme.colors.white}
         />
 
         <TouchableOpacity style={styles.iconButton} onPress={onFilter}>
@@ -61,11 +62,12 @@ const styles = StyleSheet.create({
       height: 40,
       borderWidth: 1,
       borderColor: theme.colors.lightGrey,
-      borderRadius: 10,
-      paddingHorizontal: 10,
+      borderRadius: 20,
+      paddingHorizontal: 20,
       marginRight: 10,
       fontSize: 16,
-      backgroundColor: theme.colors.background,
+      color: theme.colors.white,
+      backgroundColor: theme.colors.primary,
     },
     iconButton: {
       marginLeft: 10,
