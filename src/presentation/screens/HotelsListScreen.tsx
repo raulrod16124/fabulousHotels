@@ -146,9 +146,9 @@ const styles = StyleSheet.create({
     },
     noHotelsText: {
         fontSize: 18,
+        fontFamily: theme.fonts.primary,
         color: theme.colors.text,
         textAlign: 'center',
         marginVertical: 20,
-        fontWeight: '500',
     },
 })

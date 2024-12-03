@@ -124,15 +124,15 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 10,
     },
     modalTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 24,
+        fontFamily: theme.fonts.primary,
         marginBottom: 20,
         color: theme.colors.text,
         textAlign: 'center',
     },
     filterCategory: {
-        fontSize: 16,
-        fontWeight: '600',
+        fontSize: 20,
+        fontFamily: theme.fonts.primary,
         marginTop: 10,
         marginBottom: 10,
         color: theme.colors.text,
@@ -141,7 +141,8 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderRadius: 10,
         textAlign: "center",
-        fontSize: 24
+        fontSize: 24,
+        fontFamily: theme.fonts.primary,
     },
     starsContainer: {
         flexDirection: "row",
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
     filterOption: {
         flexDirection: "row",
         justifyContent: "center",
-        padding: 15,
+        padding: 10,
         backgroundColor: theme.colors.primary,
         borderRadius: 8,
         marginBottom: 10,
@@ -165,30 +166,31 @@ const styles = StyleSheet.create({
     filterText: {
         color: theme.colors.white,
         fontSize: 24,
-        fontWeight: 'bold',
+        fontFamily: theme.fonts.primary,
         marginHorizontal: 10,
     },
     applyButton: {
         marginTop: 20,
-        padding: 15,
+        padding: 10,
         backgroundColor: theme.colors.secondary,
         borderRadius: 8,
         alignItems: 'center',
     },
     applyButtonText: {
         color: theme.colors.text,
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: 20,
+        fontFamily: theme.fonts.primary,
     },
     closeButton: {
         marginTop: 10,
-        padding: 15,
+        padding: 10,
         backgroundColor: theme.colors.text,
         borderRadius: 8,
         alignItems: 'center',
     },
     closeButtonText: {
         color: theme.colors.white,
-        fontSize: 16,
+        fontSize: 20,
+        fontFamily: theme.fonts.primary,
     },
 });

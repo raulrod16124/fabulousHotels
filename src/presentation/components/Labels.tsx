@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     labelText: {
         color: theme.colors.white,
         fontSize: 18,
+        fontFamily: theme.fonts.primary,
         marginRight: 10,
     },
     removeIcon: {

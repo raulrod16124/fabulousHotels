@@ -26,6 +26,7 @@ export const HotelCard = ({hotel, onPress, extraStyles}: IProps) => {
                             size={20} 
                             color={theme.colors.secondary} 
                             iconStyle='solid'
+                            style={{marginRight: 5}}
                         />
                         <Text style={styles.infoText}>
                             {hotel.stars}
@@ -77,15 +78,15 @@ const styles = StyleSheet.create({
     },
     title: {
         color: theme.colors.white,
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 22,
+        fontFamily: theme.fonts.primary,
     },
     infoWrapper: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: theme.colors.primary,
-        padding: 10,
+        padding: 5,
         paddingHorizontal: 20,
         borderWidth: 1,
         borderColor: theme.colors.primary
@@ -93,11 +94,11 @@ const styles = StyleSheet.create({
     infoContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
+        alignItems: 'center'
     },
     infoText: {
         color: theme.colors.text,
-        fontSize: 18,
-        fontWeight: 'bold',
+        fontSize: 24,
+        fontFamily: theme.fonts.primary,
     },
   });

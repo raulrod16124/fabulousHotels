@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: theme.fonts.primary,
     color: theme.colors.secondary,
     textAlign: 'center',
   },
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: theme.colors.white,
     backgroundColor: theme.colors.primary,
+    fontFamily: theme.fonts.primary,
   },
   iconButton: {
     marginLeft: 10,

@@ -7,5 +7,8 @@
         "primary": "#219EBC",
         "secondary": "#FFB703",
         "text": "#023047"
+    },
+    "fonts":{
+        "primary": "Lobster-Regular"
     }
 }
