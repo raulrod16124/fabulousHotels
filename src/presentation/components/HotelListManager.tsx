@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Filters, Hotel } from "../../interfaces/hotels.interfaces";
+import { Filters, Hotel, SortOptions } from "../../interfaces/hotels.interfaces";
 
 interface IProps {
     hotels: Hotel[];
@@ -7,14 +7,14 @@ interface IProps {
         processedHotels: Hotel[],
         onSearch: (text: string) => void,
         onFilter: (filter: Filters) => void,
-        // onSort: (criteria: string) => void
+        onSort: (order: SortOptions) => void
     ) => React.ReactNode;
 }
 
 export const HotelListManager = ({ hotels, children }: IProps) => {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [filter, setFilter] = useState<Filters>();
-    //   const [sortCriteria, setSortCriteria] = useState<string>("");
+    const [sortOptions, setSortOptions] = useState<SortOptions>();
     const [processedHotels, setProcessedHotels] = useState<Hotel[]>(hotels);
 
     useEffect(() => {
@@ -39,22 +39,22 @@ export const HotelListManager = ({ hotels, children }: IProps) => {
             }
         }
 
-        // if (sortCriteria === "priceAsc") {
-        //   updatedHotels.sort((a, b) => a.price - b.price);
-        // } else if (sortCriteria === "priceDesc") {
-        //   updatedHotels.sort((a, b) => b.price - a.price);
-        // } else if (sortCriteria === "rating") {
-        //   updatedHotels.sort((a, b) => b.userRating - a.userRating);
-        // }
+        if (sortOptions === "priceAsc") {
+            updatedHotels.sort((a, b) => a.price - b.price);
+        } else if (sortOptions === "priceDesc") {
+            updatedHotels.sort((a, b) => b.price - a.price);
+        } else if (sortOptions === "starsAsc") {
+            updatedHotels.sort((a, b) => a.stars - b.stars);
+        } else if (sortOptions === "starsDesc") {
+            updatedHotels.sort((a, b) => b.stars - a.stars);
+        }
 
         setProcessedHotels(updatedHotels);
-    }, [searchTerm, filter, hotels]);
-    //   }, [searchTerm, filter, sortCriteria, hotels]);
+    }, [searchTerm, filter, sortOptions, hotels]);
 
     const onSearch = (text: string) => setSearchTerm(text);
     const onFilter = (filterParams: any) => setFilter(filterParams);
-    //   const onSort = (criteria: string) => setSortCriteria(criteria);
+    const onSort = (order: SortOptions) => setSortOptions(order);
 
-    return children(processedHotels, onSearch, onFilter);
-    //   return children(processedHotels, onSearch, onFilter, onSort);
+    return children(processedHotels, onSearch, onFilter, onSort);
 };

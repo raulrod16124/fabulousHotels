@@ -1,21 +1,27 @@
 import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import theme from '../theme.json';
 import Icon from '@react-native-vector-icons/fontawesome6';
-import { Filters } from '../../interfaces/hotels.interfaces';
+import { Filters, SortOptions } from '../../interfaces/hotels.interfaces';
 
 interface IProps {
     onRemoveFilter: (value: number) => void;
+    onRemoveOrder: () => void;
     appliedFilters?: Filters;
+    appliedOrder?: SortOptions;
 }
 
-export const FilterLabels = ({ onRemoveFilter, appliedFilters = {} }: IProps) => {
-    const filters = Object.values(appliedFilters).filter(value => value !== undefined);
-    if (filters.length === 0) return null;
+export const Labels = ({ onRemoveFilter, onRemoveOrder, appliedFilters = {}, appliedOrder = 'initial'}: IProps) => {
+    const labels: string[] = Object.values(appliedFilters).filter(value => value !== undefined);
+    if(appliedOrder !== 'initial'){
+        labels.push(appliedOrder);
+    }
+
+    if (labels.length === 0) return null;
 
     return (
         <View style={styles.container}>
             <FlatList
-                data={filters}
+                data={labels}
                 horizontal
                 keyExtractor={(item) => item.toString()}
                 contentContainerStyle={styles.list}
@@ -23,7 +29,15 @@ export const FilterLabels = ({ onRemoveFilter, appliedFilters = {} }: IProps) =>
                 renderItem={({ item }) => (
                     <View style={styles.label}>
                         <Text style={styles.labelText}>{item}</Text>
-                        <Pressable onPress={() => onRemoveFilter(item)} style={styles.removeIcon}>
+                        <Pressable onPress={() => {
+                            if(item.toString().includes('price') || item.toString().includes('star')){
+                                onRemoveOrder()
+                            } else {
+                                onRemoveFilter(Number(item))
+                            }
+                        }} 
+                            style={styles.removeIcon}
+                        >
                             <Icon name="xmark" size={16} color={theme.colors.white} iconStyle="solid" />
                         </Pressable>
                     </View>

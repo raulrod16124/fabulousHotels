@@ -10,9 +10,10 @@ import theme from "../theme.json"
 import { useState } from 'react';
 import { FilterModal } from '../components/FilterModal';
 import { HotelListManager } from '../components/HotelListManager';
-import { FilterLabels } from '../components/FilterLabels';
-import { Filters } from '../../interfaces/hotels.interfaces';
+import { Labels } from '../components/FilterLabels';
+import { Filters, SortOptions } from '../../interfaces/hotels.interfaces';
 import { removeByValue } from '../helpers';
+import { SortModal } from '../components/SortModal';
 
 interface IProps extends StackScreenProps<RootStackParams, "HotelsListScreen">{}
 
@@ -23,8 +24,10 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
       backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     };
 
-    const [filterModalVisible, setFilterModalVisible] = useState(false);
+    const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
+    const [isSortModalVisible, setSortModalVisible] = useState(false);
     const [appliedFilters, setAppliedFilters] = useState<Filters>();
+    const [appliedOrder, setAppliedOrder] = useState<SortOptions>();
 
     const {isLoading, data: hotels = []} = useQuery({
       queryKey: ["hotels"],
@@ -54,23 +57,26 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
                 <StatusBar barStyle="light-content" translucent={false} />
             </View>
             <HotelListManager hotels={hotels}>
-                {/* {(processedHotels, onSearch, onFilter, onSort) => ( */}
-                {(processedHotels, onSearch, onFilter) => (
+                {(processedHotels, onSearch, onFilter, onSort) => (
                     <>
                         <Header 
                             onSearch={onSearch} 
-                            onFilter={()=> setFilterModalVisible(true)} 
-                            // onSort={onSort} 
-                            onSort={()=>{}} 
+                            onFilter={()=> setIsFilterModalVisible(true)}  
+                            onSort={()=> setSortModalVisible(true)} 
                         />
 
-                        <FilterLabels 
-                            appliedFilters={appliedFilters} 
+                        <Labels
+                            appliedFilters={appliedFilters}
+                            appliedOrder={appliedOrder}
                             onRemoveFilter={(valueToRemove) => {
                                 const updatedFilters = removeByValue(valueToRemove, appliedFilters);
                                 setAppliedFilters(updatedFilters)
                                 onFilter(updatedFilters)
                             }} 
+                            onRemoveOrder={() => {
+                                console.log("ORDER")
+                                setAppliedOrder("initial")
+                            }}
                         />
 
                         <FlatList
@@ -90,15 +96,24 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
                             <Text style={styles.noHotelsText}>No hotels found</Text>
                         )}
                         <FilterModal
-                            isVisible={filterModalVisible} 
+                            isVisible={isFilterModalVisible} 
                             hotels={hotels}
-                            closeModal={() => setFilterModalVisible(false)}
-                            applyFilters={(values) => {
-                                onFilter(values)
-                                setAppliedFilters(values)
+                            closeModal={() => setIsFilterModalVisible(false)}
+                            applyFilters={(filters) => {
+                                onFilter(filters)
+                                setAppliedFilters(filters)
                             }}
                             filters={appliedFilters}
-                        />  
+                        /> 
+                        <SortModal
+                            isVisible={isSortModalVisible}
+                            closeModal={() => setSortModalVisible(false)}
+                            applySort={(order) => {
+                                onSort(order)
+                                setAppliedOrder(order)
+                            }}
+                            order={appliedOrder}
+                        />
                     </>
                 )}
             </HotelListManager>
