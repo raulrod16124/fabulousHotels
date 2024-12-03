@@ -33,3 +33,5 @@ export interface Filters {
     stars?: number;
     maxPrice?: number;
 }
+
+export type SortOptions = 'initial' | 'priceAsc' | 'priceDesc' | 'starsAsc' | 'starsDesc';
