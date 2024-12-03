@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import Icon from '@react-native-vector-icons/fontawesome6';
 import theme from "../theme.json"
 
@@ -9,6 +9,7 @@ interface IProps {
 }
 
 const Header = ({ onSearch, onFilter, onSort }:IProps) => {
+  const isAndroid = Platform.OS === "android";
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -17,7 +18,7 @@ const Header = ({ onSearch, onFilter, onSort }:IProps) => {
 
       <View style={styles.toolbar}>
         <TextInput
-          style={styles.searchInput}
+          style={[styles.searchInput, !isAndroid && { height: 40 }]}
           placeholder="Search..."
           onChangeText={(value) => onSearch(value)}
           placeholderTextColor={theme.colors.white}
@@ -59,16 +60,15 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    height: 40,
     borderWidth: 1,
     borderColor: theme.colors.lightGrey,
     borderRadius: 10,
     paddingHorizontal: 20,
     marginRight: 10,
     fontSize: 16,
+    fontFamily: theme.fonts.primary,
     color: theme.colors.white,
     backgroundColor: theme.colors.primary,
-    fontFamily: theme.fonts.primary,
   },
   iconButton: {
     marginLeft: 10,
