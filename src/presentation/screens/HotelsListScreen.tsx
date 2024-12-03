@@ -10,7 +10,7 @@ import theme from "../theme.json"
 import { useState } from 'react';
 import { FilterModal } from '../components/FilterModal';
 import { HotelListManager } from '../components/HotelListManager';
-import { Labels } from '../components/FilterLabels';
+import { Labels } from '../components/Labels';
 import { Filters, SortOptions } from '../../interfaces/hotels.interfaces';
 import { removeByValue } from '../helpers';
 import { SortModal } from '../components/SortModal';
