@@ -1,3 +1,7 @@
 {
+  "compilerOptions": {
+    "types": ["jest"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "__tests__/**/*.ts", "__tests__/**/*.tsx"],
   "extends": "@tsconfig/react-native/tsconfig.json"
 }
