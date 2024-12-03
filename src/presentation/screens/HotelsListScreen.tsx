@@ -14,15 +14,12 @@ import { Labels } from '../components/Labels';
 import { Filters, SortOptions } from '../../interfaces/hotels.interfaces';
 import { removeByValue } from '../helpers';
 import { SortModal } from '../components/SortModal';
+import { AppStatusBar } from '../components/AppStatusBar';
 
 interface IProps extends StackScreenProps<RootStackParams, "HotelsListScreen">{}
 
 export const HotelsListScreen = ({ navigation }: IProps) => {
-    const isDarkMode = useColorScheme() === 'dark';
     const isAndroid = Platform.OS === "android";
-    const backgroundStyle = {
-      backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    };
 
     const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
     const [isSortModalVisible, setSortModalVisible] = useState(false);
@@ -38,24 +35,15 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
     if(isLoading){
         return (
             <View style={styles.isLoadingContainer}>
-                <SafeAreaView style={backgroundStyle}>
-                    <View style={[styles.statusBarContainer, { backgroundColor: theme.colors.primary}]}>
-                        <StatusBar barStyle="light-content" translucent={false} />
-                    </View>
-                    <ActivityIndicator />
-                </SafeAreaView>
+                <AppStatusBar />
+                <ActivityIndicator size={30} color={theme.colors.white}/>
             </View>
         )
     }
 
     return (
-        <SafeAreaView style={{
-            backgroundColor: theme.colors.background, 
-            marginBottom: isAndroid ? 170 : 100,
-        }}>
-            <View style={[styles.statusBarContainer, { backgroundColor: theme.colors.primary}]}>
-                <StatusBar barStyle="light-content" translucent={false} />
-            </View>
+        <View style={{ marginBottom: isAndroid ? 120 : 100 }}>
+            <AppStatusBar />
             <HotelListManager hotels={hotels}>
                 {(processedHotels, onSearch, onFilter, onSort) => (
                     <>
@@ -117,7 +105,7 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
                     </>
                 )}
             </HotelListManager>
-        </SafeAreaView>
+        </View>
     )
 }
 
@@ -129,7 +117,8 @@ const styles = StyleSheet.create({
     isLoadingContainer: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: theme.colors.primary
     },
     modalContainer: {
         flex: 1,
