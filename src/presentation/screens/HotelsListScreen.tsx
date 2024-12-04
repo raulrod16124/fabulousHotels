@@ -61,10 +61,7 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
                                 setAppliedFilters(updatedFilters)
                                 onFilter(updatedFilters)
                             }} 
-                            onRemoveOrder={() => {
-                                console.log("ORDER")
-                                setAppliedOrder("initial")
-                            }}
+                            onRemoveOrder={() => setAppliedOrder("initial")}
                         />
 
                         <FlatList
@@ -130,7 +127,7 @@ const styles = StyleSheet.create({
         paddingTop: 20,
     },
     lastItem: {
-        marginBottom: 40,
+        marginBottom: Platform.OS === "android" ? 100 : 150,
         paddingBottom: 40,
     },
     noHotelsText: {

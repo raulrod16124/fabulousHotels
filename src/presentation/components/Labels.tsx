@@ -56,8 +56,7 @@ export const Labels = ({ onRemoveFilter, onRemoveOrder, appliedFilters = {}, app
 const styles = StyleSheet.create({
     container: {
         paddingVertical: 10,
-        paddingHorizontal: 16,
-        backgroundColor: theme.colors.background,
+        paddingHorizontal: 16
     },
     list: {
         flexDirection: 'row',

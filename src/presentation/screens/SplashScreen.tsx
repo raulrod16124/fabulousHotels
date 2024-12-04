@@ -47,7 +47,7 @@ export const SplashScreen = ({navigation}: IProps) => {
         >
             <View style={styles.container}>
                 <Animated.View style={[styles.textContainer, { opacity: fadeAnimTop }]}>
-                    <Text style={styles.smallText}>Spend your time in</Text>
+                    <Text style={styles.smallText}>Enjoy your time in</Text>
                 </Animated.View>
 
                 <Animated.View style={[styles.fabulousContainer, { opacity: fadeAnimBottom }]}>
