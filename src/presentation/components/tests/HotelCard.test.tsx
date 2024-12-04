@@ -21,7 +21,7 @@ describe('Testing HotelCard Component', () => {
     test('should render hotel information correctly', () => {
         expect(screen.getByText(mockHotel1.name)).toBeTruthy();
         expect(screen.getByText(`${mockHotel1.stars}`)).toBeTruthy();
-        expect(screen.getByText(`${mockHotel1.price} $`)).toBeTruthy();
+        expect(screen.getByText(`${mockHotel1.price} €`)).toBeTruthy();
         expect(screen.getByText(mockHotel1.location.city)).toBeTruthy();
 
         const image = screen.getByTestId('hotel-image');

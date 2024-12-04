@@ -25,7 +25,7 @@ describe('Testing HotelDetailsScreen', () => {
 
     expect(screen.getByText('Hotel 1')).toBeTruthy();
     expect(screen.getByText('6 Hercules Road, London')).toBeTruthy();
-    expect(screen.getByText('EUR 120 / night')).toBeTruthy();
+    expect(screen.getByText('120 € / night')).toBeTruthy();
     expect(screen.getByText('9.8')).toBeTruthy();
     expect(screen.getByText('(4 stars)')).toBeTruthy();
     expect(screen.getByText('Check-in: 14:00 - 20:00')).toBeTruthy();

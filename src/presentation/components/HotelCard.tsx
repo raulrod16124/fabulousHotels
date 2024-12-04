@@ -33,7 +33,7 @@ export const HotelCard = ({hotel, onPress, extraStyles}: IProps) => {
                         </Text>
                     </View>
 
-                    <Text style={styles.infoText}>{hotel.price} $</Text>
+                    <Text style={styles.infoText}>{hotel.price} €</Text>
 
                     <Text style={[styles.infoText, { marginTop: 5 }]}>
                         {hotel.location.city}
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     infoContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     infoText: {
         color: theme.colors.text,

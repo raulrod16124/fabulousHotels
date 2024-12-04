@@ -42,7 +42,7 @@ export const HotelDetailsScreen = ({ navigation, route }: IProps) => {
 
         <View style={styles.priceRatingContainer}>
           <Text style={styles.price}>
-            {currency} {price} / night
+            {price} € / night
           </Text>
 
           <View style={styles.ratingContainer}>
