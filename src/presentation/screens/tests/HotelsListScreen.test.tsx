@@ -16,7 +16,7 @@ const renderComponent = () => {
   );
 };
 
-describe('HotelsListScreen', () => {
+describe('Testing HotelsListScreen', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
