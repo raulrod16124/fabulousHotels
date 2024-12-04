@@ -11,8 +11,8 @@ interface IProps {
 
 export const HotelCard = ({hotel, onPress, extraStyles}: IProps) => {
     return (
-        <TouchableOpacity onPress={onPress} style={[styles.container, extraStyles]}>
-            <Image source={{ uri: hotel.gallery[0] }} style={styles.image} />
+        <TouchableOpacity onPress={onPress} style={[styles.container, extraStyles]} testID='hotel-card'>
+            <Image source={{ uri: hotel.gallery[0] }} style={styles.image} testID='hotel-image' />
 
             <View style={styles.textOverlay}>
                 <View style={styles.titleContainer}>
