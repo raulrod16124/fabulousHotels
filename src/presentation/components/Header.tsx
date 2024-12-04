@@ -1,6 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import Icon from '@react-native-vector-icons/fontawesome6';
 import theme from "../theme.json"
+import LinearGradient from 'react-native-linear-gradient';
 
 interface IProps {
   onSearch: (text: string) => void;
@@ -11,40 +12,44 @@ interface IProps {
 const Header = ({ onSearch, onFilter, onSort }:IProps) => {
   const isAndroid = Platform.OS === "android";
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Fabulous Hotels</Text>
-      </View>
+    <LinearGradient
+      colors={[theme.colors.primary, theme.colors.deepPrimary]}
+    >
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Fabulous Hotels</Text>
+        </View>
 
-      <View style={styles.toolbar}>
-        <TextInput
-          style={[styles.searchInput, !isAndroid && { height: 40 }]}
-          placeholder="Search..."
-          onChangeText={(value) => onSearch(value)}
-          placeholderTextColor={theme.colors.white}
-        />
-
-        <TouchableOpacity style={styles.iconButton} onPress={onFilter}>
-          <Icon 
-            name="filter" 
-            size={20} 
-            color={theme.colors.white} 
-            iconStyle='solid'
-            testID='filter-icon'
+        <View style={styles.toolbar}>
+          <TextInput
+            style={[styles.searchInput, !isAndroid && { height: 40 }]}
+            placeholder="Search..."
+            onChangeText={(value) => onSearch(value)}
+            placeholderTextColor={theme.colors.white}
           />
-        </TouchableOpacity>
 
-        <TouchableOpacity style={styles.iconButton} onPress={onSort}>
+          <TouchableOpacity style={styles.iconButton} onPress={onFilter}>
             <Icon 
-              name="sort" 
+              name="filter" 
               size={20} 
               color={theme.colors.white} 
               iconStyle='solid'
-              testID='sort-icon'
+              testID='filter-icon'
             />
-        </TouchableOpacity>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.iconButton} onPress={onSort}>
+              <Icon 
+                name="sort" 
+                size={20} 
+                color={theme.colors.white} 
+                iconStyle='solid'
+                testID='sort-icon'
+              />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -52,7 +57,6 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.colors.primary,
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.lightGrey,
@@ -80,7 +84,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: theme.fonts.primary,
     color: theme.colors.white,
-    backgroundColor: theme.colors.primary,
   },
   iconButton: {
     marginLeft: 10,

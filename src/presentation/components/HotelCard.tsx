@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     infoText: {
-        color: theme.colors.text,
+        color: theme.colors.white,
         fontSize: 24,
         fontFamily: theme.fonts.primary,
     },

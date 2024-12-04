@@ -6,6 +6,8 @@
         "darkGrey": "#555555",
         "background": "#FFFFFF",
         "primary": "#219EBC",
+        "deepPrimary": "#126984",
+        "darkPrimary": "#023047",
         "secondary": "#FFB703",
         "text": "#023047"
     },
