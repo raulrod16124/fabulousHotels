@@ -19,7 +19,7 @@ export const Labels = ({ onRemoveFilter, onRemoveOrder, appliedFilters = {}, app
     if (labels.length === 0) return null;
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container} testID='labels-container'>
             <FlatList
                 data={labels}
                 horizontal
@@ -38,7 +38,13 @@ export const Labels = ({ onRemoveFilter, onRemoveOrder, appliedFilters = {}, app
                         }} 
                             style={styles.removeIcon}
                         >
-                            <Icon name="xmark" size={16} color={theme.colors.white} iconStyle="solid" />
+                            <Icon 
+                                name="xmark" 
+                                size={16} 
+                                color={theme.colors.white} 
+                                iconStyle="solid"
+                                testID='remove-icon'
+                            />
                         </Pressable>
                     </View>
                 )}
