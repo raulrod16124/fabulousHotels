@@ -25,11 +25,23 @@ const Header = ({ onSearch, onFilter, onSort }:IProps) => {
         />
 
         <TouchableOpacity style={styles.iconButton} onPress={onFilter}>
-          <Icon name="filter" size={20} color={theme.colors.white} iconStyle='solid'/>
+          <Icon 
+            name="filter" 
+            size={20} 
+            color={theme.colors.white} 
+            iconStyle='solid'
+            testID='filter-icon'
+          />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.iconButton} onPress={onSort}>
-            <Icon name="sort" size={20} color={theme.colors.white} iconStyle='solid'/>
+            <Icon 
+              name="sort" 
+              size={20} 
+              color={theme.colors.white} 
+              iconStyle='solid'
+              testID='sort-icon'
+            />
         </TouchableOpacity>
       </View>
     </View>

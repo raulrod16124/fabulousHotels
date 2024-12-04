@@ -34,7 +34,7 @@ export const HotelsListScreen = ({ navigation }: IProps) => {
 
     if(isLoading){
         return (
-            <View style={styles.isLoadingContainer}>
+            <View style={styles.isLoadingContainer} testID="loading-indicator">
                 <AppStatusBar />
                 <ActivityIndicator size={30} color={theme.colors.white}/>
             </View>

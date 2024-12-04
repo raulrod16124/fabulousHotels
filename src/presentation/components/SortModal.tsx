@@ -31,6 +31,7 @@ export const SortModal = ({ isVisible, closeModal, applySort, order }: IProps) =
             visible={isVisible}
             animationType="slide"
             onRequestClose={closeModal}
+            testID='sort-modal'
         >
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>

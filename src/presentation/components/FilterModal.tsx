@@ -46,6 +46,7 @@ export const FilterModal = ({ isVisible, closeModal, hotels, applyFilters, filte
             visible={isVisible}
             animationType="slide"
             onRequestClose={closeModal}
+            testID='filter-modal'
         >
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
@@ -61,6 +62,7 @@ export const FilterModal = ({ isVisible, closeModal, hotels, applyFilters, filte
                                     selectedStars === stars && styles.selectedOption,
                                 ]}
                                 onPress={() => setSelectedStars(stars === selectedStars ? null : stars)}
+                                testID={`${stars} stars`}
                             >
                                 <Icon 
                                     name="star" 
