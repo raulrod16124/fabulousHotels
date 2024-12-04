@@ -1,5 +1,7 @@
 import 'react-native-gesture-handler/jestSetup';
 
+jest.mock('react-native-linear-gradient', () => 'LinearGradient');
+
 jest.mock('@react-native-vector-icons/FontAwesome6', () => 'Icon');
 
 jest.mock('@react-navigation/native', () => {
