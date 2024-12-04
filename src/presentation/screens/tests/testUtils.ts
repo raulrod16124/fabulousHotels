@@ -45,7 +45,8 @@ export const mockHotel1 = {
         email: "park_plaza@gmail.com"
     },
     gallery: [
-        "https://res.cloudinary.com/lastminute/image/upload/t_OSE_redes_item_view/v1499779963/Swindon_yjsrwz.jpg"
+        "image1.jpg",
+        "image2.jpg",
     ],
     userRating: 9.8,
     price: 120,
@@ -75,7 +76,7 @@ export const mockHotel2 = {
         email: "parisian_grand@gmail.com"
     },
     gallery: [
-        "https://res.cloudinary.com/lastminute/image/upload/t_OSE_redes_item_view/v1499779963/Paris_Grand_hotel_image.jpg"
+        "image1.jpg"
     ],
     userRating: 8.9,
     price: 200,

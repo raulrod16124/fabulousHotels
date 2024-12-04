@@ -24,7 +24,13 @@ export const HotelDetailsScreen = ({ navigation, route }: IProps) => {
   return (
     <ScrollView style={styles.container}>
       <TouchableOpacity style={styles.iconButtonContainer} onPress={()=>navigation.goBack()}>
-        <Icon name="arrow-left" size={20} color={theme.colors.black} iconStyle='solid'/>
+        <Icon 
+          name="arrow-left" 
+          size={20} 
+          color={theme.colors.black} 
+          iconStyle='solid'
+          testID='back-icon'
+        />
       </TouchableOpacity>
       <Image source={{ uri: gallery[0] }} style={styles.mainImage} />
 
@@ -72,7 +78,12 @@ export const HotelDetailsScreen = ({ navigation, route }: IProps) => {
           <Text style={styles.galleryHeader}>Gallery</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {gallery.slice(1).map((image, index) => (
-              <Image key={index} source={{ uri: image }} style={styles.galleryImage} />
+              <Image 
+                key={index} 
+                source={{ uri: image }} 
+                style={styles.galleryImage} 
+                testID='hotel-image'
+              />
             ))}
           </ScrollView>
         </View>
